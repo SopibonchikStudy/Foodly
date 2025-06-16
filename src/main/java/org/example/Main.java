@@ -16,7 +16,6 @@ public class Main {
             if (input.equalsIgnoreCase("Выход")) {
                 break;
             }
-
             try {
                 processCommand(input);
             } catch (Exception e) {
