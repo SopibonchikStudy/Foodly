@@ -1,19 +1,45 @@
 plugins {
-    id 'java'
+    java
+    `maven-publish`
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = "com.github.SopibonchikStudy"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("gpr") {
+            from(components["java"])
+            groupId = "io.github.SopibonchikStudy"
+            artifactId = "untitled3"
+            version = "1.0.0"  
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/SopibonchikStudy/Foodly")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
+//
+//tasks.test {
+//    useJUnitPlatform()
+//}
