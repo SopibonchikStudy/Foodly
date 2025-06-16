@@ -15,7 +15,6 @@ public class Order {
         this.userId = userId;
         this.restaurantId = restaurantId;
     }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
