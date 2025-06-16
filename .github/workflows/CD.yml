@@ -19,8 +19,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
+      
       - run: chmod +x ./gradlew
+      - run: ./gradlew clean
       - run: ./gradlew publish
         env:
           GITHUB_ACTOR: ${{ github.actor }}
