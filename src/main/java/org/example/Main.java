@@ -20,7 +20,6 @@ public class Main {
                 processCommand(input);
             } catch (Exception e) {
                 System.out.println("Ошибка: " + e.getMessage());
-
             }
         }
     }
